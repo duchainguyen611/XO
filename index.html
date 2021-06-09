@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO</title>
+    <style>
+        td {
+            width: 50px;
+            height: 50px;
+            color:blue;
+            font-size: x-large;
+            text-align: center;
+        }
+        tr, td {
+            border: 1px solid red;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        #secondScreen{
+            display: none;
+        }
+        body{
+           background-image: url(pic/Caro.jpg);
+           background-repeat: no-repeat;
+           background-position-x: center;
+           background-size: 100%;
+       }
+       textarea{
+           color:red;
+           font-size: 80px;
+           text-align: center;
+       }
+       .play{
+            width: 2cm;
+            height: 1cm;
+            border-color: gray;
+       }
+    </style>
+</head>
+<body>
+    <div id="firstScreen">
+        <center id="title">
+            <textarea name="" id="" cols="" rows="1">Noughts and Crosses</textarea>
+        </center>
+        <br><br><br><br><br><br><br>
+        <center>
+            <button class="play" onclick="play()">Play</button>
+        </center>
+    </div>
+    <div id="secondScreen">
+        <center>
+            <table id="content">
+            </table>
+        </center>
+        <br>
+        <center>
+            <button onclick="playAgain()" class="play">Play Again</button>
+        </center>
+    </div>
+    <script src="my.js"></script>
+</body>
+</html>
