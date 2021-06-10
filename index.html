@@ -1,78 +1,65 @@
-let player = 1;
-let won = false;
-
-function play() {
-    document.getElementById("secondScreen").style.display = "block";
-    document.getElementById("firstScreen").style.display = "none";
-    document.body.style.backgroundImage = "none";
-    let html = "";
-    for(let i = 0; i < 5; i++) {
-        html += '<tr>';
-        for(let j = 0; j < 5; j++) {
-            html += '<td id="'+i+'-'+j+'" onclick="change(this)">';
-            html += "</td>";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO</title>
+    <style>
+        td {
+            width: 100px;
+            height: 100px;
+            color:blue;
+            font-size: xx-large;
+            text-align: center;
         }
-        html += '</tr>';
-    }
-    document.getElementById('content').innerHTML = html;
-}
-
-function change(element) {
-    if(!element.innerHTML) {
-        if(player == 1) {
-            element.innerHTML = "X";
-            player = 2;
-            checkWin();
-        } else {
-            element.innerHTML = "O";
-            player = 1;
-            checkWin();
+        tr, td {
+            border: 1px solid red;
         }
-    }
-}
-
-function checkWin() {
-    // check hang ngang
-    for(let i=0;i<5;i++){
-        howToWin(document.getElementById(i +"-0").innerText,
-        document.getElementById(i + "-1").innerText,
-        document.getElementById(i + "-2").innerText,
-        document.getElementById(i + "-3").innerText,
-        document.getElementById(i + "-4").innerText);
-    }
-    // check hang doc
-    for(let i=0;i<5;i++){
-        howToWin(document.getElementById("0-"+i).innerText,
-        document.getElementById("1-"+i).innerText,
-        document.getElementById("2-"+i).innerText,
-        document.getElementById("3-"+i).innerText,
-        document.getElementById("4-"+i).innerText);
-    }
-    // check cheo trai
-    howToWin(document.getElementById("0-0").innerText,
-    document.getElementById("1-1").innerText,
-    document.getElementById("2-2").innerText,
-    document.getElementById("3-3").innerText,
-    document.getElementById("4-4").innerText);
-    //check cheo phai
-    howToWin(document.getElementById("0-4").innerText,
-    document.getElementById("1-3").innerText,
-    document.getElementById("2-2").innerText,
-    document.getElementById("3-1").innerText,
-    document.getElementById("4-0").innerText);
-}
-
-function howToWin(first, second, third,fourth,fifth) {
-    if(first != "" && first == second && first == third && first == fourth && first == fifth) {
-    if(first=="X"){
-        alert("Player 1 winner!");
-    }else{
-        alert("Player 2 winner!");
-    }
-    won = true;
-    }
-}
-
-function playAgain(){
-    play();
-}
+        table {
+            border-collapse: collapse;
+        }
+        #secondScreen{
+            display: none;
+        }
+        body{
+           background-image: url(pic/Caro.jpg);
+           background-repeat: no-repeat;
+           background-position-x: center;
+           background-size: 100%;
+       }
+       textarea{
+           color:red;
+           font-size: 80px;
+           text-align: center;
+       }
+       .play{
+            width: 2cm;
+            height: 1cm;
+            border-color: gray;
+       }
+    </style>
+</head>
+<body>
+    <div id="firstScreen">
+        <center id="title">
+            <textarea name="" id="" cols="" rows="1">Noughts and Crosses</textarea>
+        </center>
+        <br><br><br><br><br><br><br>
+        <center>
+            <button class="play" onclick="play()">Play</button>
+        </center>
+    </div>
+    <div id="secondScreen">
+        <center>
+            <table id="content">
+            </table>
+        </center>
+        <br>
+        <center>
+            <button onclick="playAgain()" class="play">Play Again</button>
+        </center>
+    </div>
+    <script src="my.js"></script>
+</body>
+</html>
